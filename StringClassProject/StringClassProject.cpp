@@ -2,10 +2,23 @@
 //
 
 #include <iostream>
+#include "String.h"
+
 
 int main()
 {
-    std::cout << "Hello World!\n";
+   std::cout << "Hello World!\n";
+
+   String s1; 
+   String s2("My String");
+
+   
+
+   std::cout << s1.toString() << std::endl;
+   std::cout << "len=" << s1.length() << std::endl;
+   std::cout << s2.toString() << std::endl;
+   std::cout << "len=" << s2.length() << std::endl;
+
 }
 
 // Run program: Ctrl + F5 or Debug > Start Without Debugging menu

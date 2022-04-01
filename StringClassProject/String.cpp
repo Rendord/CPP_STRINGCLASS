@@ -1,19 +1,29 @@
-#include "String.h"
 #include <iostream>
 
+#include "String.h"
 
-int len;
-char* str;
+
+
 
 String::String() {
-	//cout << "  String::String() " <<
+	len = 0;
+	str = new char[1];
+	str[0] = '\0';
 } 
 
 String::String(const char* str) {
-	while (*str != '\0') {
-		
+	len = 0;
+	while (str[len] != '\0') {
+		len++;
 	}
-	str = new char[len + 1]
+	this->str = new char[len + 1];
+	for (int i = 0; i <= len; i++) {
+		this->str[i] = str[i];
+	}
+
+	//std::cout << this->str << std::endl;
+
+
 } 
 
 String::String(String& s) {
@@ -37,4 +47,13 @@ String& String::operator=(String& s) {
 String::~String() {
 	if (str != nullptr)
 		delete[] str;
+}
+
+char* String::toString() {
+
+	return str;
+}
+
+int String::length() {
+	return len;
 }

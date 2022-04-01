@@ -1,5 +1,6 @@
 #include "Fraction.h"
 
+
 int numerator; 
 int denumerator;
 
