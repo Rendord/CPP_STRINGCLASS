@@ -3,6 +3,8 @@
 
 #include <iostream>
 #include "String.h"
+#include "Fraction.h"
+
 
 
 int main()
@@ -11,7 +13,15 @@ int main()
 
    String s1; 
    String s2("My String");
+   String s3 = s2;
+   String s6 = String(s2);
+   String s4(s2);
+   String s5;
+   s5 = s2;
 
+   Fraction f1(4, 5);
+
+   std::cout << f1 << std::endl;
    
 
    std::cout << s1.toString() << std::endl;
