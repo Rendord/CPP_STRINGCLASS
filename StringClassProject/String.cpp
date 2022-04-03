@@ -169,7 +169,7 @@ int String::length() const{
 
 #include "String.h"
 
-bool operator==(String lhs, String rhs) {
+bool operator==(const String& lhs, const String& rhs) {
 	if (lhs.length() != rhs.length()) {
 		return false;
 	}
@@ -180,6 +180,10 @@ bool operator==(String lhs, String rhs) {
 	}
 	return true;
 }
+//bool operator==(const String&, const String&)
+//{
+//	return true;
+//}
 bool operator!=(String& lhs, String& rhs) {
 	/*return !(lhs == rhs);*/
 	if (lhs.length() != rhs.length())

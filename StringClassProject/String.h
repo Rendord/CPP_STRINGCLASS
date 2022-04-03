@@ -24,7 +24,7 @@ public:
 	int length() const;
 };
 
-bool operator==(const String&, const String&);
+bool operator ==(const String&, const String&);
 bool operator !=(const String&, const String&);
 bool operator >(const String&, const String&);
 bool operator <(const String&, const String&);

@@ -47,9 +47,9 @@ int main()
    String aaa("aaaaa");
    String aa("aaa");
 
-   /*if (boom == aap) {
+   if (boom == aap) {
 	    std::cout << "boom is niet aap" << std::endl;
-   }*/
+   }
 }
 
 // Run program: Ctrl + F5 or Debug > Start Without Debugging menu
