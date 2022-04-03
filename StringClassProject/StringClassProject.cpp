@@ -48,8 +48,22 @@ int main()
    String aa("aaa");
 
    if (boom == aap) {
-	    std::cout << "boom is niet aap" << std::endl;
+	    std::cout << "boom is aap" << std::endl;
    }
+   else {
+	   std::cout << "boom is niet aap" << std::endl;
+   }
+
+   std::cout << "boom is aap? " << (boom == aap) << " aap is paa? " << (aap == paa) << std::endl;
+   std::cout << "boom > aap? " << (boom > aap) << " aaa < aaaaa? " << (aa < aaa) << std::endl;
+   std::cout << "aap > aaaap? " << (aap > test) << std::endl;
+
+   String noot("noot");
+   String mies("mies");
+   String leesplank = aap + noot;
+   String completeleesplank = leesplank + mies;
+
+   std::cout << completeleesplank.toString() << std::endl;
 }
 
 // Run program: Ctrl + F5 or Debug > Start Without Debugging menu

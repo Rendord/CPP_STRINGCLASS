@@ -1,5 +1,6 @@
 #include <iostream>
 
+
 #include "String.h"
 
 
@@ -184,7 +185,7 @@ bool operator==(const String& lhs, const String& rhs) {
 //{
 //	return true;
 //}
-bool operator!=(String& lhs, String& rhs) {
+bool operator!=(const String& lhs, const String& rhs) {
 	/*return !(lhs == rhs);*/
 	if (lhs.length() != rhs.length())
 		return true;
@@ -193,24 +194,57 @@ bool operator!=(String& lhs, String& rhs) {
 			return false;
 	return true;
 }
-bool operator>(String& lhs, String& rhs) {
+bool operator>(const String& lhs, const String& rhs) {
+	bool haha_yes = false; 
 	for (int i = 0; i < lhs.length(); i++)
 	{
-		if (lhs[i] > rhs[i])
-			return true;
-		if (lhs[i] < rhs[i])
-			return false;
+		
+		if (lhs[i] > rhs[i]) {
+			haha_yes = true;
+			break;
+		}
+		if (lhs[i] < rhs[i]) {
+			haha_yes = false;
+			break;
+		}
+
 	}
+	return haha_yes;
 }
-bool operator<(String& lhs, String& rhs) {
-	for (int i = 0; i < lhs.length(); i++)
-	{
-		if (lhs[i] < rhs[i])
-			return true;
-		if (lhs[i] > rhs[i])
-			return false;
+bool operator<(const String& lhs, const String& rhs) {
+	return !(lhs > rhs);
+	//bool haha_yes = false; 
+	//for (int i = 0; i < lhs.length(); i++)
+	//{
+	//	std::cout << "a";
+	//	if (lhs[i] < rhs[i])
+	//		haha_yes = true;
+	//	if (lhs[i] > rhs[i])
+	//		haha_yes = false;
+	//}
+	//return haha_yes;
+}
+
+String operator+(const String& lhs, const String& rhs) {
+	char* innerstring = new char[lhs.length() + rhs.length() + 1];
+	for (int i = 0; i < lhs.length() + rhs.length(); i++) {
+		if (i < lhs.length()) {
+			innerstring[i] = lhs[i];
+		}
+		if (i >= lhs.length()) {
+			innerstring[i] = rhs[i - lhs.length()];
+		}
 	}
+	innerstring[lhs.length() + rhs.length()] = '\0';
+
+	return String(innerstring);
 }
+
+
+std::ostream& operator<<(std::ostream& stream, const String& rhs) {
+	return stream << rhs.toString();
+}
+
 
 
 

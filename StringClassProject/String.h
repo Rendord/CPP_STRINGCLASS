@@ -29,5 +29,5 @@ bool operator !=(const String&, const String&);
 bool operator >(const String&, const String&);
 bool operator <(const String&, const String&);
 
-//String operator+(const String&, const String&);
-//std::ostream& operator<<(std::ostream&, const String&);
+String operator+(const String&, const String&);
+std::ostream& operator<<(std::ostream&, const String&);
