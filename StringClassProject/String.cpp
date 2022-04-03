@@ -167,18 +167,22 @@ int String::length() const{
 	return len;
 }
 
-bool operator==(String& lhs, String& rhs) {
-	if (lhs.length() != rhs.length())
-		return false;
-	for (int i = 0; i < lhs.length(); i++)
-		if(lhs[i] != rhs[i])
-			return false;
-	return true;
+#include "String.h"
 
+bool operator==(String lhs, String rhs) {
+	if (lhs.length() != rhs.length()) {
+		return false;
+	}
+	for (int i = 0; i < lhs.length(); i++) {
+		if (lhs[i] != rhs[i]) {
+			return false;
+		}
+	}
+	return true;
 }
 bool operator!=(String& lhs, String& rhs) {
 	/*return !(lhs == rhs);*/
-	if (lhs.length() !=  rhs.length())
+	if (lhs.length() != rhs.length())
 		return true;
 	for (int i = 0; i < lhs.length(); i++)
 		if (lhs[i] != rhs[i])
@@ -203,5 +207,6 @@ bool operator<(String& lhs, String& rhs) {
 			return false;
 	}
 }
+
 
 

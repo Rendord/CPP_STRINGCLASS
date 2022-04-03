@@ -19,13 +19,15 @@ public:
 	String& toupper() const;
 	String& tolower() const;
 
+
 	char* toString() const;
 	int length() const;
 };
 
-bool operator ==(const String&, const String&);
+bool operator==(const String&, const String&);
 bool operator !=(const String&, const String&);
 bool operator >(const String&, const String&);
 bool operator <(const String&, const String&);
+
 //String operator+(const String&, const String&);
 //std::ostream& operator<<(std::ostream&, const String&);
