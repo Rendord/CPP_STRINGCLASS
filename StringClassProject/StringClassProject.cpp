@@ -7,6 +7,7 @@
 
 
 
+
 int main()
 {
    std::cout << "Hello World!\n";
@@ -18,6 +19,8 @@ int main()
    String s4(s2);
    String s5;
    s5 = s2;
+   String s7("spa rood fetish");
+  
 
    Fraction f1(4, 5);
 
@@ -29,6 +32,24 @@ int main()
    std::cout << s2.toString() << std::endl;
    std::cout << "len=" << s2.length() << std::endl;
 
+
+   s2.replace(1, 6, s7);
+   std::cout << s2.toString() << std::endl;
+   s2.toupper();
+   std::cout << s2.toString() << std::endl;
+   s2.tolower();
+   std::cout << s2.toString() << std::endl;
+
+   String aap("aap");
+   String boom("boom");
+   String paa("aap");
+   String test("aaaap");
+   String aaa("aaaaa");
+   String aa("aaa");
+
+   if (boom == aap) {
+	   std::cout << "boom is niet aap" << std::endl;
+   }
 }
 
 // Run program: Ctrl + F5 or Debug > Start Without Debugging menu

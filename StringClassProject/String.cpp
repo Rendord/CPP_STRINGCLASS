@@ -28,8 +28,8 @@ String::String(const char* str) {
 
 String::String(const String& s) {
 	len = s.len;
-	str = new char[len + 1];
-	for (int i = 0; i <= len; i++) {
+	str = new char[len];
+	for (int i = 0; i < len; i++) {
 		str[i] = s.str[i];
 	}
 }
@@ -78,13 +78,84 @@ char String::operator[] (const int i) const {
 void String::replace(const int begin, const int end, const String& s) {
 	int replace_len = end - begin + 1;
 	int new_len = len - replace_len + s.len;
-	char* new_string = new char[new_len];
-	for (int i = 0; i < begin -1; i++) {
-		new_string[i] = str[i];
+	char* new_string = new char[new_len + 1];
+	for (int i = 0; i < new_len; i++) {
+		if (i < begin - 1) {
+			new_string[i] = str[i];
+		}
+		if (i >= begin - 1 && i < begin + s.len - 1) {
+			new_string[i] = s.str[i - (begin - 1)];
+		}
+		if (i >= begin + s.len - 1 && i < new_len) {
+			new_string[i] = str[i - (s.len - replace_len)];
+		}
+
 	}
-	for (int i = 0; i < s.len; i++) {
-		new_string[]
+	new_string[new_len] = '\0';
+	//deprecated
+	//for (int i = 0; i < begin - 1; i++) {
+	//	new_string[i] = str[i];
+	//}
+	//for (int i = 0; i < s.len; i++) {
+	//	new_string[begin - 1 + i] = s.str[i];
+	//}
+	//for (int i = 0; i < len - end; i++) {
+	//	new_string[begin + replace_len - 1 + i] = str[end + i];
+	//}
+	if (str != nullptr) {
+		delete[] str;
 	}
+	str = new_string;
+	len = new_len;
+}
+
+bool String::search(const String s) const {
+	bool haha_yes = false;
+	int space_left = len;
+	for (int i = 0; i < len; i++) 
+	{
+		if (space_left - s.len < 0)
+			return false;
+		if (str[i] == s.str[0]) 
+		{
+			for (int j = 0; j < s.len; j++) 
+			{
+				if (str[i + j] == s.str[j]) 
+				{
+					haha_yes = true;
+				}
+				else 
+				{
+					haha_yes = false;
+					break;
+				}
+			}
+		}
+		if (haha_yes)
+			return haha_yes;
+		space_left--;
+	}
+	return haha_yes;
+}
+
+String& String::toupper() const {
+	String upper = *this;
+	for (int i = 0; i < len; i++) {
+		//upper.str[i] = str[i];
+		if(str[i] > 64 && str[i] < 123)
+			str[i] -= 32;
+	}
+	return upper;
+}
+
+String& String::tolower() const {
+	String lower = *this; 
+	for (int i = 0; i < len; i++) {
+		//lower.str[i] = str[i];
+		if (str[i] > 64 && str[i] < 123)
+			str[i] += 32;
+	}
+	return lower;
 }
 
 char* String::toString() const{
@@ -95,3 +166,42 @@ char* String::toString() const{
 int String::length() const{
 	return len;
 }
+
+bool operator==(String& lhs, String& rhs) {
+	if (lhs.length() != rhs.length())
+		return false;
+	for (int i = 0; i < lhs.length(); i++)
+		if(lhs[i] != rhs[i])
+			return false;
+	return true;
+
+}
+bool operator!=(String& lhs, String& rhs) {
+	/*return !(lhs == rhs);*/
+	if (lhs.length() !=  rhs.length())
+		return true;
+	for (int i = 0; i < lhs.length(); i++)
+		if (lhs[i] != rhs[i])
+			return false;
+	return true;
+}
+bool operator>(String& lhs, String& rhs) {
+	for (int i = 0; i < lhs.length(); i++)
+	{
+		if (lhs[i] > rhs[i])
+			return true;
+		if (lhs[i] < rhs[i])
+			return false;
+	}
+}
+bool operator<(String& lhs, String& rhs) {
+	for (int i = 0; i < lhs.length(); i++)
+	{
+		if (lhs[i] < rhs[i])
+			return true;
+		if (lhs[i] > rhs[i])
+			return false;
+	}
+}
+
+
